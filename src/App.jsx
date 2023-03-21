@@ -16,7 +16,6 @@ function App() {
     event.preventDefault();
     setTodos([...todos, newTodo]);
 
-    console.log(todos)
     setTodo("")
   }
 
@@ -32,7 +31,6 @@ function App() {
       done: item.id == name ? checked : item.done,
     }))
     setTodos(updatedTodos);
-    console.log(updatedTodos);
   }
 
 
@@ -43,7 +41,6 @@ function App() {
       item.done ? null : filteredTodos.push(item)
     ))
     setTodos(filteredTodos);
-    console.log(filteredTodos);
   }
 
   return (
@@ -51,13 +48,13 @@ function App() {
       <h1 className="font-bold  text-center text-2xl mb-8" >React TODO</h1>
       <form onSubmit={handleSubmit}  >
 
-        <input required={true} className="w-full border-2 border-gray-400 px-4 py-2 mb-8" type={"text"} name="todo" value={todo} onChange={handleChange} ></input>
+        <input placeholder="Introduce elemento a la lista" required={true} className="w-full border-2 border-gray-400 px-4 py-2 mb-8" type={"text"} name="todo" value={todo} onChange={handleChange} ></input>
 
 
       </form>
       <ul className="mb-8" >
         {todos.map(({id, text, done}) => (
-          <li key={id} className="py-2 text-xl flex"  ><input  type={"checkbox"} name={id} defaultChecked={done} onClick={handleCheck}/>{ done ? <p   className="pl-4 line-through"> {text} </p> : <p   className="pl-4"> {text} </p> }     </li>
+          <li key={id} className="py-2 text-xl flex shadow-md"  ><input  type={"checkbox"} name={id} defaultChecked={done} onClick={handleCheck}/>{ done ? <p   className="pl-4 line-through"> {text} </p> : <p   className="pl-4"> {text} </p> }     </li>
         ))}
       </ul>
           <div className="flex justify-end" >
